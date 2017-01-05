@@ -70,8 +70,8 @@ vi factorize(ll num) { ///till num <= N*N
     return factors;
 }
 
-bool isPrime(ll num) { ///till num <= N*N
-if ( num <= N ) return bs[num];
+bool is_prime(ll num) { ///till num <= N*N
+if ( num <= N ) return !bs[num];
 REP (i,primes.size()) if (num % primes[i] == 0) return false;
                       else if ( primes[i]*primes[i] > num) return true; // optional line - may be faster.
 return true;
@@ -87,8 +87,36 @@ int EulerPhi(int num) {
     return result;
 }
 
+///factorize in log(n) ... need preprocessing - sieve.
+///N - max cca 1e7
+int sf[N]; ///smallest factor
+
+void group_factorize(){
+	bs[0] = bs[1] = 1;
+    FOR (i,2,N) if (!bs[i]){
+      sf[i] = i;
+      for (int j = i * i; j <= N; j += i){
+        if(!bs[j]){
+            bs[j] = 1;
+            sf[j] = i;
+        }
+      }
+      //primes.PB(i); //optional - get vector of primes.
+    }
+}
+
 
 main(){
   get_primes();
-  factorize(158)
+
+
+  /*group_factorize();
+  int num = 47 * 11 * 11;
+
+  while( num > 1){
+    cout << sf[num] << " ";
+    num/= sf[num];
+  }*/
+
+  return 0;
 }
