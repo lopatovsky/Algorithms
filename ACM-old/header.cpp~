@@ -1,0 +1,33 @@
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <cstring>
+#include <iomanip>
+#include <iostream>
+#include <limits.h>
+#include <map>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <vector>
+using namespace std;
+typedef pair<int,int> ii;
+typedef vector<int> vi;
+typedef vector<ii> vii;
+#define DEBUG(x) cout << ">>> " << #x << " : " << x << endl;
+#define MP make_pair
+#define PB push_back
+#define FOR(i,a,b) for ( int i = int(a); i <= int(b); ++i )
+#define FORD(i,a,b) for ( int i = int(a); i >= int(b); --i )
+#define TR(c,it) for( typeof(c.begin()) it = c.begin(); it != c.end(); ++it )
+#define TRR(c,it) for( typeof(c.rbegin()) it = c.rbegin(); it != c.rend(); ++it )
+
+const int INF = 1<<29;
+typedef long long ll;
+
+int main( ) {
+
+
+  return 0;
+}

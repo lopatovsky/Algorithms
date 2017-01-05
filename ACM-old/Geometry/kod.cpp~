@@ -1,0 +1,113 @@
+/** vzdialenost **/
+inline double len( double a, double b){ return sqrt(a*a + b*b); }
+
+
+double len(double a, double b, double c, double d){
+    return sqrt( (a-c)*(a-c) + (b-d)*(b-d) );
+}
+
+/**Vektorivy Sucin (double,int) **/
+
+int vecSucin( double a, double b, double c, double d){
+    double vys =  a * d - b * c;
+    return (vys > 0) ? 1 : 0; //vlavo 1 vpravo 0;
+}
+
+int vecSucin( int a, int b, int c, int d){
+
+    int vys =  a * d - b * c;
+    if (vys > 0) return 1;
+    if (vys == 0 ) return 0;
+    return -1;
+}
+
+/**Vektorovy Sucin (double)  + Epsilon **/
+int vecSucin( double a, double b, double c, double d){
+    double vys =  a * d - b * c;
+    if (vys < 10e-10 && vys > -10e-10)return 0;;
+    return (vys > 0) ? -1 : 1; //vlavo -1 vpravo 1;
+}
+
+/**Permutacie vsetkych podmonin pola  **/
+
+ for (s = 1; s < n-1;s++){
+
+            for(p = 0; p < n-s; p++) perm[p] = 0;
+            for(;p<n;p++) perm[p] = 1;
+
+            do{
+                ...
+
+            }while (next_permutation(perm, perm + n) );
+
+/**Konvexna obalka pre prvky permutacie podmoniny **/
+// 17 -> max prvkov. t -> struktura s x a y;
+double convexHull(){
+
+    int up[17];
+
+    int cnt=0, f = 0;
+    double ret = 0;
+    while (perm[f])f++;
+    up[cnt] = f++;
+    while (perm[f])f++;
+    up[++cnt] = f++;
+
+    FOR(i,f,n-1){
+        if (perm[i]) continue;
+
+        while (vecSucin( t[up[cnt]].x - t[up[cnt-1]].x,
+                          t[up[cnt]].y - t[up[cnt-1]].y,
+                          t[i].x - t[up[cnt-1]].x,
+                          t[i].y - t[up[cnt-1]].y ) < 0){
+            cnt--;
+            if(cnt == 0)break;
+        }
+        up[++cnt] = i;
+    }
+
+    REP(i,cnt){
+        ret += length[ up[i] ][ up[ i+1 ] ];
+    }
+    /*dolna obalka*/
+    cnt = 0;
+    f = 0;
+    while (perm[f])f++;
+    up[cnt] = f++;
+    while (perm[f])f++;
+    up[++cnt] = f++;
+
+    FOR(i,f,n-1){
+        if (perm[i]) continue;
+        while (vecSucin( t[up[cnt]].x - t[up[cnt-1]].x,
+                          t[up[cnt]].y - t[up[cnt-1]].y,
+                          t[i].x - t[up[cnt-1]].x,
+                          t[i].y - t[up[cnt-1]].y ) > 0){
+            cnt--;
+            if(cnt == 0)break;
+        }
+        up[++cnt] = i;
+    }
+    REP(i,cnt){
+        ret += length[ up[i] ][ up[ i+1 ] ];
+    }
+    return ret;
+
+}
+/** Prienik dvoch priamok x-ova hodnota**/
+double prienik( double x1,  double y1,  double x2,  double y2,  double x3,  double y3,  double x4,  double y4){
+
+    double a,b,c,d,e,f;
+
+    a = y1 - y2;
+    b = -1 * (x1 - x2);
+    c =  (a * x1 + b * y1);
+
+    d = y3 - y4;
+    e = -1 * (x3 - x4);
+    f =  (d * x3 + e * y3);
+
+    return ( ( e * c - b * f ) / ( a * e - b * d ) );
+}
+
+/** **/

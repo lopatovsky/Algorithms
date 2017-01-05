@@ -1,0 +1,17 @@
+Given n numbers on the number axis, find a number x so that the sum of the distance between x and the n given numbers is minimum.
+This is, however, a classic problem. We have the following conclusion:
+
+The number x in the problem should be the median of the n numbers.
+
+******
+nice makro : #define all(x) (x).begin(), (x).end()
+
+printf("%I64d\n", x); // vypis ll for codeforces
+inplace_merge(A + S, A + U, A + T); pole A[] zotriedi v O(n) ak je z dvoch podposloupnosti.
+
+Bit Mask Brutforce DP -> 259.1u B.cpp
+
+*****
+CHYBY:
+v grafe nikdy nezistuj isLeaf ako if (gn[v].size() == 1), totiz takto sa moze stat, ze koren bude nespravne povazovany za list!
+

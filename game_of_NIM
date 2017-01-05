@@ -1,0 +1,33 @@
+1) n piles of coins.
+2) two players change and take arbitrary num > 0 from any pile. 
+3) who win (take the last coin)?
+
+***************
+
+example:
+
+6, 9, 3 
+
+bin:
+
+ 110
+1001
+  11
+---- xor
+
+1100
+
+first loses only if ( 6 ^ 9 ^ 3 == 0 )
+
+move strategy -> make xor == 0 for the opponent.
+
+always possible 
+
+1) find number where leftmost 1 of xorsum is 1. 
+2) change it to the zero.
+3) For every other 1 in xorsum, flip the bit in that number.
+
+
+source: https://www.topcoder.com/community/data-science/data-science-tutorials/algorithm-games/ 
+
+todo: Grundy numbers!

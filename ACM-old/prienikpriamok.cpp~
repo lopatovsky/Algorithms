@@ -1,0 +1,37 @@
+
+pair<double,double> prienik( double x1,  double y1,  double x2,  double y2,  double x3,  double y3,  double x4,  double y4){
+
+    double a,b,c,d,e,f;
+
+    a = y1 - y2;
+    b = -1 * (x1 - x2);
+    c =  (a * x1 + b * y1);
+
+    d = y3 - y4;
+    e = -1 * (x3 - x4);
+    f =  (d * x3 + e * y3);
+
+    return pair<double,double> (     ( c * e - b * f ) / ( a * e - b * d ) ,
+                                       ( c * d - a * f )  / ( b * d - a * e )    );
+}
+
+int main( )
+{
+    int cs,a,b,c,d,e,f,g,h;
+    scanf("%d",&cs);
+
+    REP(i,cs){
+        scanf("%d%d%d%d",&a,&b,&c,&d);
+        scanf("%d%d%d%d",&e,&f,&g,&h);
+        pair<double,double> pdd = prienik(a,b,c,d,e,f,g,h);
+        if(isnan(pdd.first) && isnan(pdd.second) ) printf("LINE\n"); // su totozne
+        else if (!isfinite(pdd.first) || !isfinite(pdd.second)) printf("NONE\n"); // su rovnobezne
+        else{
+             /*if(pdd.first==0)printf("POINT 0.00");  //pre istotu aby nehadzalo -0.00
+            else*/ printf("POINT %.2f",pdd.first);
+            /*if(pdd.second==0) printf(" 0.00\n");
+            else*/ printf(" %.2f\n",pdd.second);
+        }
+    }
+	return 0;
+}

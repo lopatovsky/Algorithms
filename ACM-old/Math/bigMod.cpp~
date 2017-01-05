@@ -1,0 +1,14 @@
+inline int sqr( int x ) {
+  return x * x;
+}
+// b - number, p - power, m - modulo
+int bigmod( int b, int p, int m )
+{
+  if ( p == 0 )
+    return 1;
+  if ( p == 1 )
+    return b % m;
+  if ( ~p & 1 )
+    return sqr( bigmod(b,p/2,m) ) % m;
+  return ( bigmod( b, p-1, m ) * ( b % m ) ) % m;
+}
