@@ -46,7 +46,7 @@ typedef long long ll;
 typedef unsigned long long ull;
 /*******************************************************/
 
-const int N = 45000; //45000 = sqrt(2MLD);
+const ll N = 45000; //45000 = sqrt(2MLD);
 
 int bs[N+1];
 vi primes;
@@ -89,7 +89,7 @@ int EulerPhi(int num) {
 
 ///factorize in log(n) ... need preprocessing - sieve.
 ///N - max cca 1e7
-int sf[N]; ///smallest factor
+int sf[N+1]; ///smallest factor
 
 void group_factorize(){
 	bs[0] = bs[1] = 1;
