@@ -69,7 +69,6 @@ struct ST_SUM{
 
             /***Joining  branches operation ***/
             segment_tree[node] = segment_tree[leftIdx] + segment_tree[rightIdx];
-            cout << segment_tree[node] << " ";
             /***/
        }
    }
